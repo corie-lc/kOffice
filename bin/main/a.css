@@ -1,0 +1,13 @@
+.mainOptionBar {
+    -fx-border-radius: 20 20 20 20;
+    -fx-background-radius: 20 20 20 20;
+    -fx-padding: 15px;
+    -fx-border-insets: 15px;
+    -fx-background-insets: 15px;
+    -fx-background-color: lightblue;
+}
+
+.button {
+    -fx-background-color: clear;
+    -fx-text-fill: white;
+}
