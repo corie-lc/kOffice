@@ -13,11 +13,14 @@
 }
 
 .textWindow{
-    -fx-background-color: #393E46;
     -fx-max-width: 1000;
     -fx-min-width: 1000;
     -fx-max-height: 720;
     -fx-min-height: 720;
+    -fx-border-radius: 10 10 0 0;
+    -fx-background-radius: 10 10 0 0;
+    -fx-background-color: #393E46;
+    -fx-border-color: -fx-control-inner-background;
 }
 
 .textWindow .text{

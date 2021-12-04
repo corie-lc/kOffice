@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 class HomeBar {
-    fun getBar(scene: Scene, container : VBox) : HBox{
+    fun getBar(scene: Scene, container : VBox, stage: Stage, textWindow : VBox) : HBox{
         val homeBar = HBox()
         //val menuButton = Bar().menuButton
 
@@ -25,7 +25,7 @@ class HomeBar {
         homeBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
         homeBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
 
-        homeBar.children.add(Bar().getMenuButton(scene, container))
+        homeBar.children.add(Bar().getMenuButton(scene, container, stage, textWindow))
 
         return homeBar
     }

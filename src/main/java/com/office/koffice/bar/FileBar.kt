@@ -17,42 +17,41 @@ class FileBar {
     private val fileBar = HBox()
     private var fullText = ""
 
-    fun getBar(scene: Scene) : HBox{
-        println("here")
-        val fileBar = HBox()
-        //val menuButton = Bar().menuButton
+    fun getBar(scene: Scene, textWindow: VBox, stage: Stage, container: VBox) : HBox{
 
+        // bar modifier
+        val fileBar = HBox()
+        fileBar.children.add(Bar().getMenuButton(scene, container, stage, textWindow))
+        fileBar.children.addAll(buttonLoadFile, buttonSaveFile)
+
+        // style components --
         scene.stylesheets.add("a.css")
-       // menuButton.styleClass.add("menu-bar")
-        scene.stylesheets.add("a.css")
+        buttonLoadFile.styleClass.add("menu-button")
+        buttonSaveFile.styleClass.add("menu-button")
+
         fileBar.styleClass.add("bar")
         fileBar.alignment = Pos.TOP_CENTER
-
-       // fileBar.children.add(menuButton)
-        fileBar.children.add(Button("aa"))
         fileBar.alignment = Pos.TOP_CENTER
         fileBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
         fileBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
+
+        // on click components --
+        buttonLoadFile.setOnAction {
+            loadFile(stage, textWindow)
+        }
+
+        buttonSaveFile.setOnAction {
+            saveAs(stage, textWindow)
+        }
 
 
         return fileBar
     }
 
-    private fun saveAs(stage: Stage) {
+    private fun saveAs(stage: Stage, textWindow: VBox) {
         val fileChooser = FileChooser()
         val selectedFile = fileChooser.showOpenDialog(stage)
-/*
-        for(item in textWindow.children){
-            val area = item as CodeArea
-            fullText += area.text
-        }
-
-
- */
-        File(selectedFile.toURI()).writeText(fullText)
-
-
-        System.out.println(fullText)
+        File(selectedFile.absoluteFile.toString()).writeText(TextArea().getAllText(textWindow))
     }
 
     private fun loadFile(stage: Stage, textWindow: VBox){

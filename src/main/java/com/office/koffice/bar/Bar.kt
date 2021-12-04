@@ -15,7 +15,7 @@ class Bar {
     public val default_width_bar = 700.0
     public val default_height_bar = 65.0
 
-    fun getMenuButton(scene: Scene, container: VBox) : MenuButton {
+    fun getMenuButton(scene: Scene, container: VBox, stage: Stage, textWindow: VBox) : MenuButton {
         val buttonHome = MenuItem("Home Bar")
         val buttonFont = MenuItem("Font Bar")
         val buttonLayout = MenuItem("Layout Bar")
@@ -27,13 +27,13 @@ class Bar {
         menuButton.styleClass.add("menu-bar")
 
         buttonHome.setOnAction {
-            replaceBar(container, HomeBar().getBar(scene, container))
+            replaceBar(container, HomeBar().getBar(scene, container, stage, textWindow))
         }
         buttonFont.setOnAction {
             replaceBar(container, FontBar().getBar(scene))
         }
         buttonFile.setOnAction {
-            replaceBar(container, FileBar().getBar(scene))
+            replaceBar(container, FileBar().getBar(scene, textWindow, stage, container))
         }
         buttonLayout.setOnAction {
             replaceBar(container, LayoutBar().getBar(scene))
@@ -46,7 +46,7 @@ class Bar {
         return menuButton
     }
 
-    fun replaceBar(container: VBox, bar : HBox){
+    private fun replaceBar(container: VBox, bar : HBox){
         container.children.removeAt(1)
         container.children.add(1, bar)
     }
@@ -62,7 +62,7 @@ class Bar {
         bar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
         scene.stylesheets.add("a.css")
 
-        container.children.add( HomeBar().getBar(scene, container))
+        container.children.add(HomeBar().getBar(scene, container, stage, textWindow))
 
         bar.setOnMouseEntered {
             val scaleTransition = ScaleTransition()

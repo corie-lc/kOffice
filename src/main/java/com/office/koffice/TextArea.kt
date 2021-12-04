@@ -17,9 +17,23 @@ class TextArea {
     private val scrollPages = ScrollPane()
     val documentTextField = CodeArea()
 
+    fun getAllText(textWindow: VBox) : String{
+        var allText = ""
+        println(textWindow.children)
+
+        for(item in textWindow.children){
+            val itemMod = item as CodeArea
+            allText += itemMod.text
+            println(itemMod.text)
+        }
+
+        return allText
+    }
+
 
     fun writeToTextBox(text : String, type: Int, textWindow : VBox){
         println(textWindow.children)
+        textWindow.children.clear()
         if(type == 0){
             var num = 15
             val list = text.toList()
@@ -75,6 +89,7 @@ class TextArea {
         autoPage.styleClass.add("textWindow")
 
 
+
         autoPage.setOnKeyPressed { key ->
             println(textWindow.children.size)
             if(autoPage.length > 30 && textWindow.children.indexOf(autoPage) == textWindow.children.size - 1) {
@@ -120,7 +135,6 @@ class TextArea {
         documentTextField.setMaxSize(1000.0, 720.0)
         documentTextField.setMinSize(1000.0, 720.0)
         documentTextField.styleClass.add("textWindow")
-        documentTextField.style = "-fx-text-fill: green;"
 
         scrollPages.vbarPolicy = ScrollPane.ScrollBarPolicy.ALWAYS
         scrollPages.hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
