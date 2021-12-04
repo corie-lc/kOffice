@@ -99,7 +99,7 @@ class TextArea {
     }
 
     fun writingField(scene: Scene, mainWindow : VBox, textWindow: VBox){
-        mainWindow.children.add(2, scrollPages)
+        mainWindow.children.add(scrollPages)
 
 
         documentTextField.setOnKeyPressed {

@@ -3,23 +3,23 @@ package com.office.koffice.bar
 import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.layout.HBox
-import javafx.scene.layout.VBox
-import javafx.stage.Stage
 
 class FontBar {
-    fun launchBar(stage: Stage, containers: VBox, scene: Scene){
+    fun getBar(scene: Scene) : HBox{
         val fontBar = HBox()
-       // fontBar.children.addAll(homeBar().buttonFeature, homeBar().buttonFont, homeBar().buttonLayout, homeBar().buttonFile, homeBar().buttonPrint)
-        val menuButton = Bar().menuButton
-        scene.stylesheets.add("a.css")
-        menuButton.styleClass.add("menu-bar")
-        fontBar.children.add(menuButton)
-        fontBar.alignment = Pos.TOP_CENTER
-        fontBar.styleClass.add("bar")
-        fontBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
-        scene.stylesheets.add("a.css")
+       // val menuButton = Bar().menuButton
 
-        containers.children.removeAt(0)
-        containers.children.add(0, fontBar)
+        scene.stylesheets.add("a.css")
+       // menuButton.styleClass.add("menu-bar")
+        scene.stylesheets.add("a.css")
+        fontBar.styleClass.add("bar")
+        fontBar.alignment = Pos.TOP_CENTER
+
+       // fontBar.children.add(menuButton)
+        fontBar.alignment = Pos.TOP_CENTER
+        fontBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
+        fontBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
+
+        return fontBar
     }
 }

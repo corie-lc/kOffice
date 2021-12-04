@@ -42,9 +42,6 @@ class HelloApplication : Application() {
 
         TextArea().writingField(scene, mainWindowVBox, textWindow)
 
-
-
-
         primaryStage.show()
 
     }

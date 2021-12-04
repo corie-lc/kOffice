@@ -1,7 +1,5 @@
 package com.office.koffice.bar
 
-import com.office.koffice.FileBarOptions
-import com.office.koffice.HelloApplication
 import com.office.koffice.TextArea
 import javafx.geometry.Pos
 import javafx.scene.Scene
@@ -10,7 +8,6 @@ import javafx.scene.layout.HBox
 import javafx.scene.layout.VBox
 import javafx.stage.FileChooser
 import javafx.stage.Stage
-import org.fxmisc.richtext.CodeArea
 import java.io.File
 
 class FileBar {
@@ -18,35 +15,27 @@ class FileBar {
     private val buttonLoadFile = Button("Load File")
     private val buttonNew = Button("New File")
     private val fileBar = HBox()
-    private val menuButton = Bar().menuButton
     private var fullText = ""
 
-    fun launchBar(stage: Stage, containers: VBox, scene: Scene, mainWindow: VBox, textWindow: VBox){
+    fun getBar(scene: Scene) : HBox{
+        println("here")
+        val fileBar = HBox()
+        //val menuButton = Bar().menuButton
+
         scene.stylesheets.add("a.css")
-
-        menuButton.styleClass.add("menu-bar")
-
-        fileBar.children.add(menuButton)
-        fileBar.alignment = Pos.TOP_CENTER
+       // menuButton.styleClass.add("menu-bar")
+        scene.stylesheets.add("a.css")
         fileBar.styleClass.add("bar")
+        fileBar.alignment = Pos.TOP_CENTER
+
+       // fileBar.children.add(menuButton)
+        fileBar.children.add(Button("aa"))
+        fileBar.alignment = Pos.TOP_CENTER
         fileBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
+        fileBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
 
-        scene.stylesheets.add("a.css")
 
-        mainWindow.children.removeAt(1)
-
-        containers.children.add(1, fileBar)
-
-        // settings
-        fileBar.children.addAll(buttonSaveFile, buttonLoadFile, buttonNew)
-
-        buttonSaveFile.setOnAction { saveAs( stage) }
-        buttonLoadFile.setOnAction { loadFile(stage,textWindow) }
-        buttonSaveFile.styleClass.add("menu-button")
-        buttonLoadFile.styleClass.add("menu-button")
-        buttonNew.styleClass.add("menu-button")
-
-        // collect all text
+        return fileBar
     }
 
     private fun saveAs(stage: Stage) {

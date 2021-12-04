@@ -7,20 +7,23 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 class PrintBar {
-    fun launchBar(stage: Stage, containers: VBox, scene : Scene){
+    fun getBar(scene: Scene) : HBox{
+        println('a')
         val printBar = HBox()
-        val menuButton = Bar().menuButton
+       // val menuButton = Bar().menuButton
+
         scene.stylesheets.add("a.css")
-        menuButton.styleClass.add("menu-bar")
-        printBar.children.add(menuButton)
-        //printBar.children.addAll(homeBar().buttonFeature, homeBar().buttonFont, homeBar().buttonLayout, homeBar().buttonFile, homeBar().buttonPrint)
-        printBar.alignment = Pos.TOP_CENTER
+   //     menuButton.styleClass.add("menu-bar")
+        scene.stylesheets.add("a.css")
         printBar.styleClass.add("bar")
+        printBar.alignment = Pos.TOP_CENTER
+
+
+    //    printBar.children.add(menuButton)
+        printBar.alignment = Pos.TOP_CENTER
         printBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
         printBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
-        scene.stylesheets.add("a.css")
 
-        containers.children.removeAt(0)
-        containers.children.add(0, printBar)
+        return printBar
     }
 }
