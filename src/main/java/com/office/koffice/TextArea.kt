@@ -1,9 +1,11 @@
 package com.office.koffice
 
+import javafx.geometry.Insets
 import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
+import javafx.scene.layout.Border
 import javafx.scene.layout.VBox
 import javafx.scene.text.Text
 import org.fxmisc.richtext.CodeArea
@@ -56,7 +58,6 @@ class TextArea {
         autoPage.isWrapText = true
         autoPage.styleClass.add("textWindow")
 
-
         autoPage.setOnKeyPressed { key ->
             println(textWindow.children.size)
             if(autoPage.length > 30 && textWindow.children.indexOf(autoPage) == textWindow.children.size - 1) {
@@ -75,6 +76,7 @@ class TextArea {
 
         autoPage.id = Random.nextInt().toString()
         textWindow.children.add(autoPage)
+        scrollPages.vbarPolicy = ScrollPane.ScrollBarPolicy.ALWAYS
 
 
     }
@@ -87,7 +89,6 @@ class TextArea {
         autoPage.setMinSize(1000.0, 720.0)
         autoPage.isWrapText = true
         autoPage.styleClass.add("textWindow")
-
 
 
         autoPage.setOnKeyPressed { key ->
@@ -115,7 +116,6 @@ class TextArea {
 
     fun writingField(scene: Scene, mainWindow : VBox, textWindow: VBox){
         mainWindow.children.add(scrollPages)
-
 
         documentTextField.setOnKeyPressed {
             if(documentTextField.length > 30 && documentTextField.length > 30 && textWindow.children.indexOf(documentTextField) == textWindow.children.size - 1){

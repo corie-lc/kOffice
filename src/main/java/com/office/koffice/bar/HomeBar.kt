@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
 class HomeBar {
-    fun getBar(scene: Scene, container : VBox, stage: Stage, textWindow : VBox) : HBox{
+    fun getBar(scene: Scene, container: VBox, stage: Stage, textWindow: VBox) : HBox{
         val homeBar = HBox()
         //val menuButton = Bar().menuButton
 

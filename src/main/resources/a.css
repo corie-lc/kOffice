@@ -1,14 +1,10 @@
 .bar {
-    -fx-border-radius: 20 20 20 20;
-    -fx-background-radius: 20 20 20 20;
-    -fx-padding: 15px;
-    -fx-border-insets: 15px;
-    -fx-background-insets: 15px;
-    -fx-background-color: #393E46;
+    -fx-background-insets: 0px, 0px, 15px, 15px;
+    -fx-background-color: #1F2833;
     -fx-min-width: 500;
     -fx-max-width: 500;
-    -fx-min-height: 65;
-    -fx-max-height: 65;
+    -fx-min-height: 25;
+    -fx-max-height: 25;
     transition: width 2s;
 }
 
@@ -19,34 +15,41 @@
     -fx-min-height: 720;
     -fx-border-radius: 10 10 0 0;
     -fx-background-radius: 10 10 0 0;
-    -fx-background-color: #393E46;
-    -fx-border-color: -fx-control-inner-background;
+    -fx-background-color: #0B0C10;
+    -fx-text-box-border: none;
 }
+.textWindow:focused {
+    -fx-focus-color: none;
+}
+
 
 .textWindow .text{
     -fx-fill: white;
+    -fx-background-color: #C5C6C7;
 }
 
 .menu-bar {
-    -fx-background-color: black ;
+    -fx-background-color: #4E4E50 ;
 }
-.menu-bar .label {
-    -fx-text-fill: white;
-}
+
 .menu-button{
-    -fx-background-color: #393E46;
+    -fx-background-color: #1F2833;
     -fx-text-fill: white;
-    -fx-min-width: 70;
-    -fx-max-width: 70;
-    -fx-max-height: 19;
-    -fx-min-height: 19;
+    -fx-min-width: 100;
+    -fx-max-width: 100;
+    -fx-min-height: 33;
+    -fx-max-height: 33;
 }
 
 .menu-button:hover {
-    -fx-background-color: gray;
+    -fx-background-color: #45A29E;
 }
 
 .menu-item{
     -fx-text-fill: white;
-    -fx-background-color: #393E46;
+    -fx-background-color: #66FCF1;
+}
+
+.custom-titlebar {
+    -fx-background-color: #1A1A1D;
 }

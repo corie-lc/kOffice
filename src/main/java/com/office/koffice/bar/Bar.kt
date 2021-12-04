@@ -30,7 +30,7 @@ class Bar {
             replaceBar(container, HomeBar().getBar(scene, container, stage, textWindow))
         }
         buttonFont.setOnAction {
-            replaceBar(container, FontBar().getBar(scene))
+            replaceBar(container, FontBar().getBar(scene, container, stage, textWindow))
         }
         buttonFile.setOnAction {
             replaceBar(container, FileBar().getBar(scene, textWindow, stage, container))
@@ -54,6 +54,8 @@ class Bar {
     fun launchBar(stage : Stage, container: VBox, scene: Scene, int : Int, mainWindow: VBox, textWindow : VBox){
         //replaceBar(container, HomeBar().getBar(scene))
         val bar = HBox()
+        val bar2 = HBox()
+
         scene.stylesheets.add("a.css")
         scene.stylesheets.add("a.css")
         bar.styleClass.add("bar")

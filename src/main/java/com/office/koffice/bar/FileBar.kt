@@ -64,9 +64,8 @@ class FileBar {
     }
 
     // utils
-    private fun getTextFileContent(file : File) : String {
-        val text = file.readText()
-        return text
+    private fun getTextFileContent(file: File): String {
+        return file.readText()
     }
 
 }

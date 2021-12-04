@@ -13,7 +13,6 @@ class CustomTitleBar {
         primaryStage.initStyle(StageStyle.UNDECORATED);
         val hbox = HBox()
         hbox.alignment = Pos.TOP_RIGHT
-        hbox.style = "-fx-background-color: #393E46"
         hbox.prefHeight = 30.0
         val closeBtn = Button("X")
         closeBtn.setOnAction { Platform.exit() }
