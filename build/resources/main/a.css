@@ -1,14 +1,3 @@
-.bar {
-    -fx-background-color: blue;
-    -fx-min-width: 350;
-    -fx-max-width: 350;
-    -fx-min-height: 500;
-    -fx-max-height: 500;
-    transition: width 2s;
-    -fx-padding: 30px, 0px, 0px, 0px;
-    -fx-border-insets: 30px, 0px, 0px, 0px;
-    -fx-background-insets: 30px, 0px, 0px, 0px;
-    }
 
 .textWindow{
     -fx-max-width: 700;
@@ -32,10 +21,23 @@
 
 .menu-bar {
     -fx-background-color: #4E4E50 ;
+    -fx-max-width: 100px;
 }
 
 .menu-bar .button {
-    -fx-background-color: blue;
+    -fx-background-color: none;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-min-width: 100px;
+    -fx-max-width: 100px;
+}
+
+.menu-bar .button:hover {
+    -fx-background-color: #D3D3D3;
+    -fx-min-height: 50px;
+    -fx-max-height: 50px;
+    -fx-min-width: 100px;
+    -fx-max-width: 100px;
 }
 
 .menu-button{

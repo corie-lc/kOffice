@@ -1,5 +1,6 @@
 package com.office.koffice.bar
 
+import com.office.koffice.TextArea
 import javafx.animation.FadeTransition
 import javafx.beans.value.ObservableValue
 import javafx.geometry.Bounds
@@ -23,11 +24,12 @@ class Bar {
         val buttonLayout = Button("Layout Bar")
         val buttonFile = Button("File Bar")
         val buttonPrint = Button("Print Bar")
+        val buttonSettings = Button("Settings")
         val a = FadeTransition()
 
 
         val menuBar = VBox()
-        menuBar.children.addAll(buttonOut, buttonHome, buttonFont, buttonLayout, buttonFile, buttonPrint)
+        menuBar.children.addAll(buttonOut, buttonHome, buttonFont, buttonLayout, buttonFile, buttonPrint, buttonSettings)
         menuBar.styleClass.add("menu-bar")
 
         buttonFont.setOnAction {
@@ -43,22 +45,45 @@ class Bar {
         buttonPrint.setOnAction {
             displaySecondaryBar(container, getPrintBar(scene, container))
         }
+        buttonSettings.setOnAction {
+            displaySecondaryBar(container, getSettingsBar(scene, container))
+        }
+
 
         return menuBar
     }
 
+    private fun getSettingsBar(scene : Scene, container: BorderPane) : VBox{
+        val settingsBar = VBox()
+        val buttonPlusSizeTextArea = Button("+ Window Size")
+
+        buttonPlusSizeTextArea.setOnAction {
+           //TextArea().plusWidthTextWindow()
+        }
+
+        scene.stylesheets.add("a.css")
+        settingsBar.styleClass.add("menu-bar")
+        settingsBar.alignment = Pos.TOP_CENTER
+
+
+        settingsBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
+        settingsBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
+        settingsBar.children.add(Button("Plus Size"))
+
+        return settingsBar
+    }
 
     private fun getLayoutBar(scene : Scene, container: BorderPane) : VBox{
         val layoutBar = VBox()
 
         scene.stylesheets.add("a.css")
-        scene.stylesheets.add("a.css")
-        layoutBar.styleClass.add("bar")
+        layoutBar.styleClass.add("menu-bar")
         layoutBar.alignment = Pos.TOP_CENTER
 
 
         layoutBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
         layoutBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
+        layoutBar.children.add(Button(""))
 
         return layoutBar
     }
@@ -82,7 +107,7 @@ class Bar {
         buttonLoadFile.styleClass.add("menu-button")
         buttonSaveFile.styleClass.add("menu-button")
 
-        fileBar.styleClass.add("bar")
+        fileBar.styleClass.add("menu-bar")
         fileBar.alignment = Pos.TOP_CENTER
         fileBar.alignment = Pos.TOP_CENTER
         fileBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
@@ -106,7 +131,7 @@ class Bar {
 
         scene.stylesheets.add("a.css")
         scene.stylesheets.add("a.css")
-        printBar.styleClass.add("bar")
+        printBar.styleClass.add("menu-bar")
         printBar.alignment = Pos.TOP_CENTER
 
 
@@ -124,7 +149,7 @@ class Bar {
         scene.stylesheets.add("a.css")
         // menuButton.styleClass.add("menu-bar")
         scene.stylesheets.add("a.css")
-        fontBar.styleClass.add("bar")
+        fontBar.styleClass.add("menu-bar")
         fontBar.alignment = Pos.TOP_CENTER
 
         // fontBar.children.add(menuButton)
@@ -135,8 +160,9 @@ class Bar {
         return fontBar
     }
 
-    private fun displaySecondaryBar(container : BorderPane, bar: VBox){
-        //
+    fun displaySecondaryBar(container : BorderPane, bar: VBox){
+        bar.styleClass.add("menu-bar")
+        container.right = bar
     }
 
 }

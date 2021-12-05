@@ -25,11 +25,14 @@ class HelloApplication : Application() {
         primaryStage.scene = scene
         primaryStage.width = 1500.0
         primaryStage.isResizable = true
+        scene.stylesheets.add("a.css")
 
         //placing
+        mainBorderPane.top = CustomTitleBar().getBar(primaryStage, mainBorderPane)
         mainBorderPane.left = leftBorderPane
         mainBorderPane.right = rightBorderPane
-        leftBorderPane.center = Bar().getMenuBar(scene, mainBorderPane)
+        Bar().displaySecondaryBar(rightBorderPane, Bar().getFileBar(scene, rightBorderPane))
+        leftBorderPane.center = Bar().getMenuBar(scene, rightBorderPane)
         mainBorderPane.center = TextArea().writingField(mainBorderPane, textWindow)
 
         primaryStage.show()
