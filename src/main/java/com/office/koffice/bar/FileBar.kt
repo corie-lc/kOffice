@@ -11,43 +11,6 @@ import javafx.stage.Stage
 import java.io.File
 
 class FileBar {
-    private val buttonSaveFile =  Button("Save as")
-    private val buttonLoadFile = Button("Load File")
-    private val buttonNew = Button("New File")
-    private val fileBar = HBox()
-    private var fullText = ""
-
-    fun getBar(scene: Scene, textWindow: VBox, stage: Stage, container: VBox) : HBox{
-
-        // bar modifier
-        val fileBar = HBox()
-        fileBar.children.add(Bar().getMenuButton(scene, container, stage, textWindow))
-        fileBar.children.addAll(buttonLoadFile, buttonSaveFile)
-
-        // style components --
-        scene.stylesheets.add("a.css")
-        buttonLoadFile.styleClass.add("menu-button")
-        buttonSaveFile.styleClass.add("menu-button")
-
-        fileBar.styleClass.add("bar")
-        fileBar.alignment = Pos.TOP_CENTER
-        fileBar.alignment = Pos.TOP_CENTER
-        fileBar.setMinSize(Bar().default_width_bar, Bar().default_height_bar)
-        fileBar.setMaxSize(Bar().default_width_bar, Bar().default_height_bar)
-
-        // on click components --
-        buttonLoadFile.setOnAction {
-            loadFile(stage, textWindow)
-        }
-
-        buttonSaveFile.setOnAction {
-            saveAs(stage, textWindow)
-        }
-
-
-        return fileBar
-    }
-
     private fun saveAs(stage: Stage, textWindow: VBox) {
         val fileChooser = FileChooser()
         val selectedFile = fileChooser.showOpenDialog(stage)

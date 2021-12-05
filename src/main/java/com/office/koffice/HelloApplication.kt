@@ -2,9 +2,8 @@ package com.office.koffice
 
 import com.office.koffice.bar.Bar
 import javafx.application.Application
-import javafx.fxml.FXMLLoader
-import javafx.geometry.Pos
 import javafx.scene.Scene
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.stage.Stage
 
@@ -14,24 +13,24 @@ class HelloApplication : Application() {
     public val defaultHeightBar = 700.0
 
     override fun start(primaryStage: Stage) {
-        val mainWindowVBox = VBox()
-        primaryStage.title = "Docs"
-        
-        mainWindowVBox.alignment = Pos.TOP_CENTER
-        // stage
-
-        val scene = Scene(mainWindowVBox, 1500.0, 800.0)
-        mainWindowVBox.style = "-fx-background-color: #1F2833"
-        primaryStage.scene = scene
-
-        primaryStage.width = 1500.0
-        primaryStage.isResizable = true
+        // definitions
+        val mainBorderPane = BorderPane()
+        val leftBorderPane = BorderPane()
+        val rightBorderPane = BorderPane()
+        val scene = Scene(mainBorderPane, 1500.0, 800.0)
         val textWindow = VBox()
 
-        Bar().launchBar(primaryStage, mainWindowVBox, scene, 0, mainWindowVBox, textWindow)
-        CustomTitleBar().launchCustomTitleBar(primaryStage, mainWindowVBox)
+        //styles
+        mainBorderPane.style = "-fx-background-color: gray"
+        primaryStage.scene = scene
+        primaryStage.width = 1500.0
+        primaryStage.isResizable = true
 
-        TextArea().writingField(scene, mainWindowVBox, textWindow)
+        //placing
+        mainBorderPane.left = leftBorderPane
+        mainBorderPane.right = rightBorderPane
+        leftBorderPane.center = Bar().getMenuBar(scene, mainBorderPane)
+        mainBorderPane.center = TextArea().writingField(mainBorderPane, textWindow)
 
         primaryStage.show()
 

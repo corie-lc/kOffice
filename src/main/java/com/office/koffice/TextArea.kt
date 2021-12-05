@@ -5,8 +5,7 @@ import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
-import javafx.scene.layout.Border
-import javafx.scene.layout.VBox
+import javafx.scene.layout.*
 import javafx.scene.text.Text
 import org.fxmisc.richtext.CodeArea
 import org.fxmisc.richtext.StyleClassedTextArea
@@ -114,8 +113,9 @@ class TextArea {
 
     }
 
-    fun writingField(scene: Scene, mainWindow : VBox, textWindow: VBox){
-        mainWindow.children.add(scrollPages)
+    fun writingField(mainWindow: BorderPane, textWindow: VBox) : ScrollPane{
+        scrollPages.styleClass.add("scroll-page")
+
 
         documentTextField.setOnKeyPressed {
             if(documentTextField.length > 30 && documentTextField.length > 30 && textWindow.children.indexOf(documentTextField) == textWindow.children.size - 1){
@@ -129,8 +129,7 @@ class TextArea {
 
 
         scrollPages.content = textWindow
-        scrollPages.maxWidth = 1000.0
-        textWindow.alignment = Pos.BOTTOM_CENTER
+        scrollPages.maxWidth = 700.0
         textWindow.spacing = 17.0
         documentTextField.setMaxSize(1000.0, 720.0)
         documentTextField.setMinSize(1000.0, 720.0)
@@ -140,6 +139,8 @@ class TextArea {
         scrollPages.hbarPolicy = ScrollPane.ScrollBarPolicy.NEVER
         scrollPages.hmax = 0.0
         textWindow.children.add(documentTextField)
+
+        return scrollPages
     }
 
     // utils
