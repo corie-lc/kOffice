@@ -31,9 +31,11 @@ class HelloApplication : Application() {
         mainBorderPane.top = CustomTitleBar().getBar(primaryStage, mainBorderPane)
         mainBorderPane.left = leftBorderPane
         mainBorderPane.right = rightBorderPane
-        Bar().displaySecondaryBar(rightBorderPane, Bar().getFileBar(scene, rightBorderPane))
-        leftBorderPane.center = Bar().getMenuBar(scene, rightBorderPane)
+        Bar().displaySecondaryBar(rightBorderPane, Bar().getFileBar(scene, rightBorderPane, primaryStage, textWindow))
+        leftBorderPane.center = Bar().getMenuBar(scene, rightBorderPane, primaryStage, textWindow)
         mainBorderPane.center = TextArea().writingField(mainBorderPane, textWindow)
+
+
 
         primaryStage.show()
 

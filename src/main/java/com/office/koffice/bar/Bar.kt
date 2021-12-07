@@ -1,7 +1,9 @@
 package com.office.koffice.bar
 
+import com.office.koffice.HelloApplication
 import com.office.koffice.TextArea
 import javafx.animation.FadeTransition
+import javafx.application.Application
 import javafx.beans.value.ObservableValue
 import javafx.geometry.Bounds
 import javafx.geometry.Pos
@@ -11,13 +13,15 @@ import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
 import javafx.scene.layout.Pane
 import javafx.scene.shape.Shape
+import javafx.stage.Stage
+import org.fxmisc.richtext.CodeArea
 
 
 class Bar {
-    private val defaultWidthBar = 700.0
+    private val defaultWidthBar = 300.0
     private val defaultHeightBar = 65.0
 
-    fun getMenuBar(scene: Scene, container : BorderPane) : VBox {
+    fun getMenuBar(scene: Scene, container : BorderPane, primaryStage: Stage, textWindow : VBox) : VBox {
         val buttonOut = Button("Hide")
         val buttonHome = Button("Home Bar")
         val buttonFont = Button("Font Bar")
@@ -36,7 +40,7 @@ class Bar {
             displaySecondaryBar(container, getFontBar(scene, container))
         }
         buttonFile.setOnAction {
-            displaySecondaryBar(container, getFileBar(scene, container))
+            displaySecondaryBar(container, getFileBar(scene, container, primaryStage, textWindow))
         }
         buttonLayout.setOnAction {
             displaySecondaryBar(container, getLayoutBar(scene, container))
@@ -88,7 +92,7 @@ class Bar {
         return layoutBar
     }
 
-    fun getFileBar(scene: Scene, container: BorderPane) : VBox{
+    fun getFileBar(scene: Scene, container: BorderPane, stage: Stage, textWindow: VBox) : VBox{
         // def
         val buttonSaveFile =  Button("Save as")
         val buttonLoadFile = Button("Load File")
@@ -115,7 +119,7 @@ class Bar {
 
         // on click components --
         buttonLoadFile.setOnAction {
-            //    loadFile(stage, textWindow)
+                FileBar().loadFile(textWindow, stage)
         }
 
         buttonSaveFile.setOnAction {

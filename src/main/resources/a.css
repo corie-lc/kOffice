@@ -1,7 +1,7 @@
 
 .textWindow{
-    -fx-max-width: 700;
-    -fx-min-width: 700;
+    -fx-max-width: 1200;
+    -fx-min-width: 1200;
     -fx-max-height: 700;
     -fx-min-height: 700;
     -fx-border-radius: 10 10 0 0;
@@ -15,13 +15,12 @@
 
 
 .textWindow .text{
-    -fx-fill: white;
+    -fx-fill: black;
     -fx-background-color: #C5C6C7;
 }
 
 .menu-bar {
     -fx-background-color: #4E4E50 ;
-    -fx-max-width: 100px;
 }
 
 .menu-bar .button {

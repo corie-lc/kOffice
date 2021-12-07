@@ -33,15 +33,14 @@ class TextArea {
 
 
     fun writeToTextBox(text : String, type: Int, textWindow : VBox){
-        println(textWindow.children)
         textWindow.children.clear()
         if(type == 0){
             var num = 15
             val list = text.toList()
 
             while(list.size >= num){
-                add(textWindow, list.subList(0, 6200).toString())
-                num += 6200
+                add(textWindow, list.subList(0, 2200).toString())
+                num += 2200
                 continue
             }
             add(textWindow, text)
@@ -49,8 +48,6 @@ class TextArea {
     }
 
     private fun add(textWindow: VBox,){
-        println(textWindow.children.size)
-
         val autoPage = CodeArea()
         autoPage.setMaxSize(1000.0, 720.0)
         autoPage.setMinSize(1000.0, 720.0)
@@ -130,6 +127,7 @@ class TextArea {
 
         scrollPages.content = textWindow
         scrollPages.maxWidth = 700.0
+        scrollPages.isResizable
         textWindow.spacing = 17.0
         documentTextField.setMaxSize(1000.0, 720.0)
         documentTextField.setMinSize(1000.0, 720.0)
@@ -142,6 +140,7 @@ class TextArea {
 
         return scrollPages
     }
+
 
     // utils
 }

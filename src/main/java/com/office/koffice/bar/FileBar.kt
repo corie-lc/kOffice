@@ -1,5 +1,6 @@
 package com.office.koffice.bar
 
+import com.office.koffice.HelloApplication
 import com.office.koffice.TextArea
 import javafx.geometry.Pos
 import javafx.scene.Scene
@@ -11,13 +12,13 @@ import javafx.stage.Stage
 import java.io.File
 
 class FileBar {
-    private fun saveAs(stage: Stage, textWindow: VBox) {
+    fun saveAs(stage: Stage, textWindow: VBox) {
         val fileChooser = FileChooser()
         val selectedFile = fileChooser.showOpenDialog(stage)
         File(selectedFile.absoluteFile.toString()).writeText(TextArea().getAllText(textWindow))
     }
 
-    private fun loadFile(stage: Stage, textWindow: VBox){
+    fun loadFile(textWindow: VBox, stage: Stage){
         val fileChooser = FileChooser()
         val selectedFile = fileChooser.showOpenDialog(stage)
 

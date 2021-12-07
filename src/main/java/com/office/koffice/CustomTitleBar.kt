@@ -1,16 +1,15 @@
 package com.office.koffice
 
 import javafx.application.Platform
-import javafx.geometry.Pos
 import javafx.scene.control.Button
+import javafx.scene.layout.BorderPane
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.HBox
-import javafx.scene.layout.VBox
 import javafx.stage.Stage
 import javafx.stage.StageStyle
 
 class CustomTitleBar {
-    fun getBar(primaryStage: Stage, mainLayout: GridPane) : HBox{
+    fun getBar(primaryStage: Stage, mainLayout: BorderPane) : HBox{
         primaryStage.initStyle(StageStyle.UNDECORATED);
         val hbox = HBox()
         hbox.prefHeight = 30.0
