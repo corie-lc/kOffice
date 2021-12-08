@@ -21,7 +21,7 @@ class HelloApplication : Application() {
         val textWindow = VBox()
 
         //styles
-        mainBorderPane.style = "-fx-background-color: gray"
+        mainBorderPane.style = "-fx-background-color: #222831"
         primaryStage.scene = scene
         primaryStage.width = 1500.0
         primaryStage.isResizable = true

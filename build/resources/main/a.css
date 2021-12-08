@@ -1,12 +1,12 @@
 
 .textWindow{
-    -fx-max-width: 700;
-    -fx-min-width: 700;
+    -fx-max-width: 1200;
+    -fx-min-width: 1200;
     -fx-max-height: 700;
     -fx-min-height: 700;
     -fx-border-radius: 10 10 0 0;
     -fx-background-radius: 10 10 0 0;
-    -fx-background-color: white;
+    -fx-background-color: #222831;
     -fx-text-box-border: none;
 }
 .textWindow:focused {
@@ -16,12 +16,11 @@
 
 .textWindow .text{
     -fx-fill: white;
-    -fx-background-color: #C5C6C7;
+    -fx-background-color: white;
 }
 
 .menu-bar {
-    -fx-background-color: #4E4E50 ;
-    -fx-max-width: 100px;
+    -fx-background-color: #393E46 ;
 }
 
 .menu-bar .button {
@@ -33,7 +32,7 @@
 }
 
 .menu-bar .button:hover {
-    -fx-background-color: #D3D3D3;
+    -fx-background-color: #CA3E47;
     -fx-min-height: 50px;
     -fx-max-height: 50px;
     -fx-min-width: 100px;
@@ -41,7 +40,7 @@
 }
 
 .menu-button{
-    -fx-background-color: #1F2833;
+    -fx-background-color: #222831;
     -fx-text-fill: white;
     -fx-min-width: 50;
     -fx-max-width: 50;
@@ -50,14 +49,15 @@
 }
 
 .menu-button:hover {
-    -fx-background-color: #45A29E;
+    -fx-background: #CA3E47;
 }
 
 .menu-item{
     -fx-text-fill: white;
-    -fx-background-color: #66FCF1;
+    -fx-background-color: #222831;
 }
 
 .custom-titlebar {
-    -fx-background-color: black;
+    -fx-background-color: #393E46;
+    -fx-border-color: black;
 }

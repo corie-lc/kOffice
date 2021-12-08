@@ -16,6 +16,7 @@ class CustomTitleBar {
         val closeBtn = Button("X")
         closeBtn.setOnAction { Platform.exit() }
         hbox.children.add(closeBtn)
+        hbox.style = "-fx-background-color: #393E46;"
 
 
         class Delta {

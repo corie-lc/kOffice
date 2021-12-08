@@ -50,19 +50,19 @@ class Bar {
             displaySecondaryBar(container, getPrintBar(scene, container))
         }
         buttonSettings.setOnAction {
-            displaySecondaryBar(container, getSettingsBar(scene, container))
+            displaySecondaryBar(container, getSettingsBar(scene, container, textWindow))
         }
 
 
         return menuBar
     }
 
-    private fun getSettingsBar(scene : Scene, container: BorderPane) : VBox{
+    private fun getSettingsBar(scene : Scene, container: BorderPane, textWindow: VBox) : VBox{
         val settingsBar = VBox()
         val buttonPlusSizeTextArea = Button("+ Window Size")
 
         buttonPlusSizeTextArea.setOnAction {
-            //TextArea().plusWidthTextWindow()
+           // TextArea().plusWidthTextWindow(textWindow)
         }
 
         scene.stylesheets.add("a.css")
