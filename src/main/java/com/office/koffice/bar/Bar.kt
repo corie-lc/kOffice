@@ -62,7 +62,7 @@ class Bar {
         val buttonPlusSizeTextArea = Button("+ Window Size")
 
         buttonPlusSizeTextArea.setOnAction {
-           //TextArea().plusWidthTextWindow()
+            //TextArea().plusWidthTextWindow()
         }
 
         scene.stylesheets.add("a.css")
@@ -96,7 +96,8 @@ class Bar {
         // def
         val buttonSaveFile =  Button("Save as")
         val buttonLoadFile = Button("Load File")
-        val buttonNew = Button("New File")
+        val buttonSave = Button("Save File")
+        val buttonNewProject = Button("Project")
         val fileBar = VBox()
 
 
@@ -104,7 +105,7 @@ class Bar {
         var fullText = ""
 
         // bar modifier
-        fileBar.children.addAll(buttonLoadFile, buttonSaveFile)
+        fileBar.children.addAll(buttonLoadFile, buttonSaveFile, buttonSave, buttonNewProject)
 
         // style components --
         scene.stylesheets.add("a.css")
@@ -116,15 +117,26 @@ class Bar {
         fileBar.alignment = Pos.TOP_CENTER
         fileBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
         fileBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
+        var lastSaveLocation = ""
 
         // on click components --
         buttonLoadFile.setOnAction {
-                FileBar().loadFile(textWindow, stage)
+            FileBar().loadFile(textWindow, stage)
         }
 
         buttonSaveFile.setOnAction {
-            //    saveAs(stage, textWindow)
+            lastSaveLocation =  FileBar().saveAs(stage, textWindow)
         }
+
+        buttonSave.setOnAction {
+            FileBar().save(textWindow, lastSaveLocation)
+        }
+
+        buttonNewProject.setOnAction {
+            textWindow.children.clear()
+            TextArea().add(textWindow)
+        }
+
 
 
         return fileBar

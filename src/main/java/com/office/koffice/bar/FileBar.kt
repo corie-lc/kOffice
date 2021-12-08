@@ -12,10 +12,20 @@ import javafx.stage.Stage
 import java.io.File
 
 class FileBar {
-    fun saveAs(stage: Stage, textWindow: VBox) {
+    var lastSavedLocation = ""
+
+    fun saveAs(stage: Stage, textWindow: VBox) : String{
         val fileChooser = FileChooser()
         val selectedFile = fileChooser.showOpenDialog(stage)
+        lastSavedLocation = selectedFile.toString()
         File(selectedFile.absoluteFile.toString()).writeText(TextArea().getAllText(textWindow))
+
+        return selectedFile.toString()
+    }
+
+    private fun saveAs(file : String, textWindow: VBox){
+        lastSavedLocation = file
+        File(file).writeText(TextArea().getAllText(textWindow))
     }
 
     fun loadFile(textWindow: VBox, stage: Stage){
@@ -25,6 +35,10 @@ class FileBar {
         if(selectedFile.extension == "txt"){
             TextArea().writeToTextBox(getTextFileContent(selectedFile.absoluteFile), 0, textWindow)
         }
+    }
+
+    fun save(textWindow: VBox, file: String) {
+        saveAs(file, textWindow)
     }
 
     // utils

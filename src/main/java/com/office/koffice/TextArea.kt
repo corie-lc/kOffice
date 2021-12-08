@@ -18,6 +18,7 @@ class TextArea {
     private val scrollPages = ScrollPane()
     val documentTextField = CodeArea()
 
+
     fun getAllText(textWindow: VBox) : String{
         var allText = ""
         println(textWindow.children)
@@ -47,7 +48,7 @@ class TextArea {
         }
     }
 
-    private fun add(textWindow: VBox,){
+    fun add(textWindow: VBox,){
         val autoPage = CodeArea()
         autoPage.setMaxSize(1000.0, 720.0)
         autoPage.setMinSize(1000.0, 720.0)
