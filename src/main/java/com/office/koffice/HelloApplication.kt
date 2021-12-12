@@ -1,6 +1,7 @@
 package com.office.koffice
 
 import com.office.koffice.bar.Bar
+import com.office.koffice.bar.FileBar
 import javafx.application.Application
 import javafx.scene.Scene
 import javafx.scene.layout.BorderPane
@@ -31,7 +32,7 @@ class HelloApplication : Application() {
         mainBorderPane.top = CustomTitleBar().getBar(primaryStage, mainBorderPane)
         mainBorderPane.left = leftBorderPane
         mainBorderPane.right = rightBorderPane
-        Bar().displaySecondaryBar(rightBorderPane, Bar().getFileBar(scene, rightBorderPane, primaryStage, textWindow))
+        Bar().displaySecondaryBar(rightBorderPane, FileBar().getFileBar(scene, rightBorderPane, primaryStage, textWindow))
         leftBorderPane.center = Bar().getMenuBar(scene, rightBorderPane, primaryStage, textWindow)
         mainBorderPane.center = TextArea().writingField(mainBorderPane, textWindow)
 

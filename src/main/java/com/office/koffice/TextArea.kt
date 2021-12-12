@@ -7,8 +7,7 @@ import javafx.scene.control.ScrollPane
 import javafx.scene.control.TextArea
 import javafx.scene.layout.*
 import javafx.scene.text.Text
-import org.fxmisc.richtext.CodeArea
-import org.fxmisc.richtext.StyleClassedTextArea
+import org.fxmisc.richtext.InlineCssTextArea
 import java.io.File
 import kotlin.random.Random
 
@@ -16,7 +15,8 @@ import kotlin.random.Random
 class TextArea {
     private val mapOfPages = HashMap<String, ArrayList<String>>()
     private val scrollPages = ScrollPane()
-    val documentTextField = CodeArea()
+    val documentTextField = InlineCssTextArea()
+
 
 
     fun getAllText(textWindow: VBox) : String{
@@ -24,7 +24,7 @@ class TextArea {
         println(textWindow.children)
 
         for(item in textWindow.children){
-            val itemMod = item as CodeArea
+            val itemMod = item as InlineCssTextArea
             allText += itemMod.text
             println(itemMod.text)
         }
@@ -49,17 +49,21 @@ class TextArea {
     }
 
     fun add(textWindow: VBox,){
-        val autoPage = CodeArea()
+        val autoPage = InlineCssTextArea()
         autoPage.setMaxSize(1000.0, 720.0)
         autoPage.setMinSize(1000.0, 720.0)
         autoPage.isWrapText = true
         autoPage.styleClass.add("textWindow")
 
+        autoPage.setOnMouseClicked {
+
+        }
+
         autoPage.setOnKeyPressed { key ->
             println(textWindow.children.size)
             if(autoPage.length > 30 && textWindow.children.indexOf(autoPage) == textWindow.children.size - 1) {
                 add(textWindow)
-                //isCodeAreaFull(autoPage)
+
             }
             val id = autoPage.id
 
@@ -81,7 +85,7 @@ class TextArea {
     private fun add(textWindow: VBox, text : String){
         println(textWindow.children.size)
 
-        val autoPage = CodeArea()
+        val autoPage = InlineCssTextArea()
         autoPage.setMaxSize(1000.0, 720.0)
         autoPage.setMinSize(1000.0, 720.0)
         autoPage.isWrapText = true
@@ -92,7 +96,7 @@ class TextArea {
             println(textWindow.children.size)
             if(autoPage.length > 30 && textWindow.children.indexOf(autoPage) == textWindow.children.size - 1) {
                 add(textWindow)
-                //isCodeAreaFull(autoPage)
+                //isInlineCssTextAreaFull(autoPage)
             }
             val id = autoPage.id
 

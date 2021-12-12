@@ -1,25 +1,22 @@
 package com.office.koffice.bar
 
-import com.office.koffice.HelloApplication
 import com.office.koffice.TextArea
 import javafx.animation.FadeTransition
-import javafx.application.Application
-import javafx.beans.value.ObservableValue
-import javafx.geometry.Bounds
+import javafx.event.ActionEvent
+import javafx.event.EventHandler
 import javafx.geometry.Pos
 import javafx.scene.Scene
 import javafx.scene.control.Button
+import javafx.scene.control.ComboBox
+import javafx.scene.control.MenuItem
 import javafx.scene.layout.BorderPane
 import javafx.scene.layout.VBox
-import javafx.scene.layout.Pane
-import javafx.scene.shape.Shape
 import javafx.stage.Stage
-import org.fxmisc.richtext.CodeArea
 
 
 class Bar {
-    private val defaultWidthBar = 300.0
-    private val defaultHeightBar = 65.0
+    val defaultWidthBar = 300.0
+    val defaultHeightBar = 65.0
 
     fun getMenuBar(scene: Scene, container : BorderPane, primaryStage: Stage, textWindow : VBox) : VBox {
         val buttonOut = Button("Hide")
@@ -37,10 +34,10 @@ class Bar {
         menuBar.styleClass.add("menu-bar")
 
         buttonFont.setOnAction {
-            displaySecondaryBar(container, getFontBar(scene, container))
+            displaySecondaryBar(container, FontBar().getFontBar(scene, textWindow))
         }
         buttonFile.setOnAction {
-            displaySecondaryBar(container, getFileBar(scene, container, primaryStage, textWindow))
+            displaySecondaryBar(container, FileBar().getFileBar(scene, container, primaryStage, textWindow))
         }
         buttonLayout.setOnAction {
             displaySecondaryBar(container, getLayoutBar(scene, container))
@@ -59,20 +56,13 @@ class Bar {
 
     private fun getSettingsBar(scene : Scene, container: BorderPane, textWindow: VBox) : VBox{
         val settingsBar = VBox()
-        val buttonPlusSizeTextArea = Button("+ Window Size")
 
-        buttonPlusSizeTextArea.setOnAction {
-           // TextArea().plusWidthTextWindow(textWindow)
-        }
-
+        // style
         scene.stylesheets.add("a.css")
         settingsBar.styleClass.add("menu-bar")
         settingsBar.alignment = Pos.TOP_CENTER
-
-
         settingsBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
         settingsBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
-        settingsBar.children.add(Button("Plus Size"))
 
         return settingsBar
     }
@@ -92,56 +82,6 @@ class Bar {
         return layoutBar
     }
 
-    fun getFileBar(scene: Scene, container: BorderPane, stage: Stage, textWindow: VBox) : VBox{
-        // def
-        val buttonSaveFile =  Button("Save as")
-        val buttonLoadFile = Button("Load File")
-        val buttonSave = Button("Save File")
-        val buttonNewProject = Button("Project")
-        val fileBar = VBox()
-
-
-
-        var fullText = ""
-
-        // bar modifier
-        fileBar.children.addAll(buttonLoadFile, buttonSaveFile, buttonSave, buttonNewProject)
-
-        // style components --
-        scene.stylesheets.add("a.css")
-        buttonLoadFile.styleClass.add("menu-button")
-        buttonSaveFile.styleClass.add("menu-button")
-
-        fileBar.styleClass.add("menu-bar")
-        fileBar.alignment = Pos.TOP_CENTER
-        fileBar.alignment = Pos.TOP_CENTER
-        fileBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
-        fileBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
-        var lastSaveLocation = ""
-
-        // on click components --
-        buttonLoadFile.setOnAction {
-            FileBar().loadFile(textWindow, stage)
-        }
-
-        buttonSaveFile.setOnAction {
-            lastSaveLocation =  FileBar().saveAs(stage, textWindow)
-        }
-
-        buttonSave.setOnAction {
-            FileBar().save(textWindow, lastSaveLocation)
-        }
-
-        buttonNewProject.setOnAction {
-            textWindow.children.clear()
-            TextArea().add(textWindow)
-        }
-
-
-
-        return fileBar
-    }
-
     fun getPrintBar(scene: Scene, container: BorderPane) : VBox{
         val printBar = VBox()
 
@@ -156,24 +96,6 @@ class Bar {
         printBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
 
         return printBar
-    }
-
-    fun getFontBar(scene: Scene, container: BorderPane) : VBox{
-        val fontBar = VBox()
-
-
-        scene.stylesheets.add("a.css")
-        // menuButton.styleClass.add("menu-bar")
-        scene.stylesheets.add("a.css")
-        fontBar.styleClass.add("menu-bar")
-        fontBar.alignment = Pos.TOP_CENTER
-
-        // fontBar.children.add(menuButton)
-        fontBar.alignment = Pos.TOP_CENTER
-        fontBar.setMinSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
-        fontBar.setMaxSize(Bar().defaultWidthBar, Bar().defaultHeightBar)
-
-        return fontBar
     }
 
     fun displaySecondaryBar(container : BorderPane, bar: VBox){
